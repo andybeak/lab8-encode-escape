@@ -7,4 +7,8 @@ You can run the project by using these commands:
     cd docker
     CURRENT_UID=$(id -u):$(id -g) docker-compose up -d
 
-The current uid determines which user PHP and Nginx runs under.
+Once the stack is running install the dependencies with the following:
+
+    docker exec -it php /bin/bash
+    composer install
+

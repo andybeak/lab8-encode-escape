@@ -1,0 +1,16 @@
+{
+    "name": "andybeak/lab8-encode-escape",
+    "description": "This project demonstrates Lab8",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Beak",
+            "email": "andy.beak@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "monolog/monolog": "^2.0@dev"
+    }
+}
