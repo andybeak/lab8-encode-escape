@@ -6,7 +6,7 @@
 <body>
     <?php
         if (isset($_GET['error'])) {
-            echo '<p>' . $_GET['error'] . '</p>';
+            echo '<p>' . filter_var($_GET['error'], FILTER_SANITIZE_STRING) . '</p>';
         }
     ?>
     <form action="check_login.php">
