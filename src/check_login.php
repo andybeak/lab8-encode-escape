@@ -12,13 +12,21 @@ try {
     echo 'Connection failed: ' . $e->getMessage();
 }
 
-$sql = 'SELECT * FROM users WHERE username="' . $_GET['username'] .'" AND password="' . $_GET['password'] .'"';
+$sql = 'SELECT * FROM users
+    WHERE username = :username
+    AND password = :password';
 
-$result = $dbh->query($sql);
+$preparedStatement = $dbh->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
 
-$logger->info("User " . $_GET['username'] . " login success [" . (bool)$result . "]");
+$preparedStatement->execute([':username' => $_GET['username'], ':password' => $_GET['password']]);
 
-if (false === $result->fetch()) {
+$result = $preparedStatement->fetchAll();
+
+$success = sizeof($result) === 1;
+
+$logger->info("User " . $_GET['username'] . " login success [" . (bool)$success . "]");
+
+if (false === $success) {
     $message = urlencode("That user or password combination is not recognized");
     header('Location: login.php?error=' . $message);
 } else {
