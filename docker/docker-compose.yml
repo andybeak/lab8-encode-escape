@@ -9,8 +9,8 @@ services:
     user: ${CURRENT_UID}
     restart: always
     volumes:
-      - '../src/:/code'
-      - './config/php/php.ini-production:/usr/local/etc/php'
+      - '../src/:/code/'
+      - './config/php/php.ini-production:/usr/local/etc/php/php.ini'
     environment:
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
       MYSQL_USER: "${MYSQL_USER}"
