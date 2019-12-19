@@ -16,7 +16,7 @@ $sql = 'SELECT * FROM users WHERE username="' . $_GET['username'] .'" AND passwo
 
 $result = $dbh->query($sql);
 
-$logger->info("User " . $_GET['username'] . " login success [ . " . (bool)$result . "]");
+$logger->info("User " . $_GET['username'] . " login success [" . (bool)$result . "]");
 
 if (false === $result->fetch()) {
     $message = urlencode("That user or password combination is not recognized");
